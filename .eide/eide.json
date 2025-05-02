@@ -1,0 +1,412 @@
+{
+  "name": "GD32F407VET6",
+  "type": "ARM",
+  "dependenceList": [],
+  "srcDirs": [],
+  "virtualFolder": {
+    "name": "<virtual_root>",
+    "files": [],
+    "folders": [
+      {
+        "name": "User",
+        "files": [
+          {
+            "path": "User/gd32f4xx_it.c"
+          },
+          {
+            "path": "User/main.c"
+          },
+          {
+            "path": "User/systick.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "App",
+        "files": [
+          {
+            "path": "App/App_Balance.c"
+          },
+          {
+            "path": "App/App_Input.c"
+          },
+          {
+            "path": "App/App_Show.c"
+          },
+          {
+            "path": "App/App_MQTT.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "Middleware",
+        "files": [
+          {
+            "path": "Middleware/circular_queue/circular_queue.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "Driver",
+        "files": [
+          {
+            "path": "Driver/steering_drv/steering_drv.c"
+          },
+          {
+            "path": "Driver/bsp_keys/bsp_keys_driver.c"
+          },
+          {
+            "path": "Driver/BH1750/BH1750.c"
+          },
+          {
+            "path": "Driver/DHT11/DHT11.c"
+          },
+          {
+            "path": "Driver/OLED/oled.c"
+          },
+          {
+            "path": "Driver/bsp_leds/bsp_leds.c"
+          },
+          {
+            "path": "Driver/ESP8266/ESP8266.c"
+          },
+          {
+            "path": "Driver/MQ2/MQ2.c"
+          },
+          {
+            "path": "Driver/bsp_buzzer/bsp_buzzer.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "Hardware",
+        "files": [
+          {
+            "path": "Hardware/bsp_usart0/bsp_usart0.c"
+          },
+          {
+            "path": "Hardware/bsp_timer8/bsp_timer8.c"
+          },
+          {
+            "path": "Hardware/bsp_iic0/bsp_iic0.c"
+          },
+          {
+            "path": "Hardware/bsp_iic_soft/bsp_iic_soft.c"
+          },
+          {
+            "path": "Hardware/bsp_usart1/bsp_usart1.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "Firmware",
+        "files": [
+          {
+            "path": "Firmware/GD32F4xx_standard_peripheral/Source/gd32f4xx_rcu.c"
+          },
+          {
+            "path": "Firmware/GD32F4xx_standard_peripheral/Source/gd32f4xx_gpio.c"
+          },
+          {
+            "path": "Firmware/GD32F4xx_standard_peripheral/Source/gd32f4xx_misc.c"
+          },
+          {
+            "path": "Firmware/GD32F4xx_standard_peripheral/Source/gd32f4xx_usart.c"
+          },
+          {
+            "path": "Firmware/GD32F4xx_standard_peripheral/Source/gd32f4xx_dma.c"
+          },
+          {
+            "path": "Firmware/GD32F4xx_standard_peripheral/Source/gd32f4xx_timer.c"
+          },
+          {
+            "path": "Firmware/GD32F4xx_standard_peripheral/Source/gd32f4xx_i2c.c"
+          },
+          {
+            "path": "Firmware/GD32F4xx_standard_peripheral/Source/gd32f4xx_adc.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "CMSIS",
+        "files": [
+          {
+            "path": "Firmware/CMSIS/GD/GD32F4xx/Source/system_gd32f4xx.c"
+          },
+          {
+            "path": "Firmware/CMSIS/GD/GD32F4xx/Source/ARM/startup_gd32f407_427.s"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "freeRTOS",
+        "files": [],
+        "folders": [
+          {
+            "name": "Core",
+            "files": [
+              {
+                "path": "Middleware/freeRTOS/croutine.c"
+              },
+              {
+                "path": "Middleware/freeRTOS/event_groups.c"
+              },
+              {
+                "path": "Middleware/freeRTOS/list.c"
+              },
+              {
+                "path": "Middleware/freeRTOS/queue.c"
+              },
+              {
+                "path": "Middleware/freeRTOS/stream_buffer.c"
+              },
+              {
+                "path": "Middleware/freeRTOS/tasks.c"
+              },
+              {
+                "path": "Middleware/freeRTOS/timers.c"
+              }
+            ],
+            "folders": []
+          },
+          {
+            "name": "Port",
+            "files": [
+              {
+                "path": "Middleware/freeRTOS/portable/MemMang/heap_4.c"
+              },
+              {
+                "path": "Middleware/freeRTOS/portable/GCC/ARM_CM4F/port.c"
+              }
+            ],
+            "folders": []
+          }
+        ]
+      }
+    ]
+  },
+  "outDir": "build",
+  "deviceName": null,
+  "packDir": null,
+  "miscInfo": {
+    "uid": "156d7e02ef0c3e629fe35e037987edbd"
+  },
+  "targets": {
+    "GD32F407": {
+      "excludeList": [
+        "<virtual_root>/Driver/VL53l0x"
+      ],
+      "toolchain": "AC6",
+      "compileConfig": {
+        "cpuType": "Cortex-M4",
+        "floatingPointHardware": "single",
+        "scatterFilePath": "",
+        "useCustomScatterFile": false,
+        "storageLayout": {
+          "RAM": [
+            {
+              "tag": "RAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "RAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "RAM",
+              "id": 3,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "IRAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x20000000",
+                "size": "0x20000"
+              },
+              "isChecked": true,
+              "noInit": false
+            },
+            {
+              "tag": "IRAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x10000000",
+                "size": "0x10000"
+              },
+              "isChecked": false,
+              "noInit": false
+            }
+          ],
+          "ROM": [
+            {
+              "tag": "ROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "ROM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "ROM",
+              "id": 3,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "IROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x8000000",
+                "size": "0x80000"
+              },
+              "isChecked": true,
+              "isStartup": true
+            },
+            {
+              "tag": "IROM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            }
+          ]
+        },
+        "options": "null"
+      },
+      "uploader": "OpenOCD",
+      "uploadConfig": {
+        "bin": "",
+        "target": "stm32f4x",
+        "interface": "cmsis-dap-v1",
+        "baseAddr": "0x08000000"
+      },
+      "uploadConfigMap": {
+        "JLink": {
+          "bin": "",
+          "baseAddr": "",
+          "cpuInfo": {
+            "vendor": "null",
+            "cpuName": "null"
+          },
+          "proType": 1,
+          "speed": 8000,
+          "otherCmds": ""
+        }
+      },
+      "custom_dep": {
+        "name": "default",
+        "incList": [
+          "User",
+          "Firmware/CMSIS",
+          "Firmware/CMSIS/GD/GD32F4xx/Include",
+          "Firmware/GD32F4xx_standard_peripheral/Include",
+          "Hardware/bsp_usart0",
+          "Hardware/bsp_timer8",
+          "Driver/steering_drv",
+          "Driver/VL53L0X",
+          "Driver/VL53L0X/core/inc",
+          "Driver/VL53L0X/platform/inc",
+          "Hardware/bsp_iic0",
+          "Driver/bsp_keys",
+          "App",
+          "Driver/OLED",
+          "Middleware/circular_queue",
+          "Middleware/freeRTOS",
+          "Middleware/freeRTOS/include",
+          "Middleware/freeRTOS/portable/GCC/ARM_CM4F",
+          ".cmsis/include",
+          "Project/RTE/_GD32F407",
+          "Driver/BH1750",
+          "Driver/DHT11",
+          "Hardware/bsp_iic_soft",
+          "Driver/bsp_leds",
+          "Driver/ESP8266",
+          "Hardware/bsp_usart1",
+          "Driver/MQ2",
+          "Driver/bsp_buzzer"
+        ],
+        "libList": [],
+        "defineList": [
+          "USE_STDPERIPH_DRIVER",
+          "GD32F407",
+          "SYS_SUPPORT_OS"
+        ]
+      },
+      "builderOptions": {
+        "AC6": {
+          "version": 3,
+          "beforeBuildTasks": [],
+          "afterBuildTasks": [],
+          "global": {
+            "use-microLIB": true,
+            "output-debug-info": "enable"
+          },
+          "c/cpp-compiler": {
+            "optimization": "level-1",
+            "language-c": "c99",
+            "language-cpp": "c++03",
+            "link-time-optimization": false,
+            "one-elf-section-per-function": true,
+            "short-enums#wchar": true,
+            "warnings": "ac5-like-warnings"
+          },
+          "asm-compiler": {
+            "$use": "asm-auto"
+          },
+          "linker": {
+            "output-format": "elf",
+            "misc-controls": "--diag_suppress=L6329",
+            "xo-base": "",
+            "ro-base": "0x08000000",
+            "rw-base": "0x20000000"
+          }
+        }
+      }
+    }
+  },
+  "version": "3.5"
+}
