@@ -2,6 +2,7 @@
 #define __BSP_BUZZER_H
 
 #include "gd32f4xx.h"
+#include "systick.h"
 
 #ifndef u32
 #define u32 uint32_t
@@ -26,6 +27,8 @@ void Buzzer_beep(u8 hz_val_index);
 
 // Í£Ö¹²¥·Å
 void Buzzer_stop();
+
+void Beep_node(u8 index);
 
 
 #endif

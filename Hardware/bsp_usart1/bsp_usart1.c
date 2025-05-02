@@ -3,21 +3,21 @@
 #include <stdio.h>
 
 // Make these static to limit their scope to this file
-char Usart1RecBuf[USART1_RXBUFF_SIZE];//串口1接收数据缓存
-unsigned int RxCounter = 0;   //串口1收到数据标志位
+char Usart1RecBuf[USART1_RXBUFF_SIZE];//????1???????????
+unsigned int RxCounter = 0;   //????1?????????λ
 
 
 
 
 /****************************************************************************
 
-描述：Usart1 初始化 
-   PA2： USART1_TX
+??????Usart1 ????? 
+   PA2?? USART1_TX
    PA3: USART1_RX
 
-参数：none
+??????none
 
-返回: none
+????: none
 
 ****************************************************************************/
 
@@ -54,10 +54,10 @@ static void USART_Config(){
 	usart_receive_config(USART1, USART_RECEIVE_ENABLE);
 	
 	
-	//打开串口的中断
+	//???????ж?
 	nvic_irq_enable(USART1_IRQn, 2, 2);
 	
-	//配置捕获什么中断
+	//???ò??????ж?
 	usart_interrupt_enable(USART1, USART_INT_RBNE);
 	usart_interrupt_enable(USART1 ,USART_INT_IDLE);
 	
@@ -81,9 +81,9 @@ void usart1_init(){
 
 
 
-//===============================================================发送==============================
+//===============================================================????==============================
 
-//发送单个字节
+//??????????
 void usart1_send_byte(uint8_t data){
 	
 	usart_data_transmit(USART1, data);
@@ -92,7 +92,7 @@ void usart1_send_byte(uint8_t data){
 	
 }
 
-//发送多个字节
+//?????????
 void usart1_send_data(uint8_t * data , uint8_t len){
 	
 	for(uint8_t i = 0; i < len; i++){
@@ -103,7 +103,7 @@ void usart1_send_data(uint8_t * data , uint8_t len){
 	
 }
 
-//发送字符串
+//?????????
 void usart1_send_string(char * str){
 	
 	while(str && *str){
@@ -119,7 +119,7 @@ void usart1_send_string(char * str){
 // int fputc1(int ch, FILE *f)
 // {      
 // while(usart_flag_get(USART1, USART_FLAG_TBE) == RESET) {
-//     /* 等待发送缓冲区为空 */
+//     /* ??????????????? */
 // }
 //     usart_data_transmit(USART1, (uint8_t)ch);
 // 	return ch;
@@ -131,21 +131,21 @@ int __io_putchar(int ch) {
 	return ch;
 }
 
-//===============================================================接收==============================
+//===============================================================????==============================
 
 // Make these static as well
 
-// 修改后：
+// ????
 uint8_t RX1_Buffer[RX1_MAX_LENGTH];
 uint32_t RX1_Cnt = 0;
 uint8_t RX1_Compelete = 0;
 
 
 
-// 一旦出发中断，就走这个函数
+// ????????ж?????????????
 void USART1_IRQHandler(){
 	//printf("recv..");
-	//如果是接收数据触发的中断
+	//??????????????????ж?
 	if(usart_interrupt_flag_get(USART1, USART_INT_FLAG_RBNE) == SET){
 		char receivedChar = usart_data_receive(USART1);
 		if (receivedChar == 'E') {
@@ -153,19 +153,19 @@ void USART1_IRQHandler(){
 				// Set a flag or call a control function
 				 gpio_bit_toggle(GPIOD,GPIO_PIN_9);
 		}
-			//从读缓冲区拿出来数据之后，把数据装到一个数组里面去
+			//??????????ó??????????????????????????????
 			if(RxCounter < USART1_RXBUFF_SIZE) {
-                Usart1RecBuf[RxCounter++] = usart_data_receive(USART1);//接收模块的数据
+                Usart1RecBuf[RxCounter++] = usart_data_receive(USART1);//????????????
             } else {
-                RxCounter = 0; // 超出缓存区则重新开始
+                RxCounter = 0; // ??????????????????
             }
             RX1_Compelete = 0 ;
 	}
 	
-	//如果是空闲触发的中断
+	//???????д??????ж?
 	if(usart_interrupt_flag_get(USART1, USART_INT_FLAG_IDLE) == SET){
 	
-		//必须得在这里再去读取串口的数据，否则会影响串口的数据收发
+		//?????????????????????????????????????????????
 		usart_data_receive(USART1);
 		
 		RX1_Cnt = 0;
@@ -176,11 +176,11 @@ void USART1_IRQHandler(){
 }
 
 
-void uart1_SendStr(char*SendBuf)//串口1打印数据
+void uart1_SendStr(char*SendBuf)//????1???????
 {
     while(*SendBuf)
     {
-        while(usart_flag_get(USART1, USART_FLAG_TBE) == RESET);//等待发送完成
+        while(usart_flag_get(USART1, USART_FLAG_TBE) == RESET);//??????????
         usart_data_transmit(USART1, (uint8_t)*SendBuf);
         SendBuf++;
     }
@@ -192,16 +192,16 @@ void uart1_send(unsigned char *bufs,unsigned char len)
     {
         while (len--)
         {
-            while(usart_flag_get(USART1, USART_FLAG_TBE) == RESET);//等待发送完成
+            while(usart_flag_get(USART1, USART_FLAG_TBE) == RESET);//??????????
             usart_data_transmit(USART1, *bufs);
             bufs ++;
         }
     }
-    else//如果字长等于或超过255，不按用户写入字长发送
+    else//????????????255?????????д?????????
     {
-        for (; *bufs != 0; bufs++)  //把字符逐个发送出去
+        for (; *bufs != 0; bufs++)  //??????????????
         {
-            while(usart_flag_get(USART1, USART_FLAG_TBE) == RESET);//等待发送完成
+            while(usart_flag_get(USART1, USART_FLAG_TBE) == RESET);//??????????
             usart_data_transmit(USART1, (uint8_t)*bufs);
         }
     }

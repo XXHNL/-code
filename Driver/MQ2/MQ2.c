@@ -1,5 +1,5 @@
 #include "MQ2.h"
-int gas; // 定义外部变量gas
+int gas; // ??????????gas
 void ADC_config(){
 
   rcu_periph_clock_enable(RCU_GPIOA);
@@ -25,14 +25,14 @@ void ADC_config(){
    adc_dma_request_after_last_enable(ADC0);
    adc_dma_mode_enable(ADC0);
 
-   // ?ò??ADC
+   // ?????ADC
    adc_enable(ADC0);
 
-   // ??×?ADC
+   // ?????ADC
    adc_calibration_enable(ADC0);
    delay_1ms(10);
 
-   // ??·????ù
+   // ??????????
    adc_software_trigger_enable(ADC0, ADC_ROUTINE_CHANNEL);
 
 }

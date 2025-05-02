@@ -26,9 +26,6 @@
         "name": "App",
         "files": [
           {
-            "path": "App/App_Balance.c"
-          },
-          {
             "path": "App/App_Input.c"
           },
           {
@@ -36,6 +33,9 @@
           },
           {
             "path": "App/App_MQTT.c"
+          },
+          {
+            "path": "App/App_Control.c"
           }
         ],
         "folders": []

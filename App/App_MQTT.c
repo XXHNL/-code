@@ -1,10 +1,10 @@
 #include "App.h"
 
-short temperature=0;           //温度
-u8    setTempValue  = 40;     //温度上限
-u8    setSmokeValue = 60;     //烟雾上限
-extern int setLightValue;   // 设置的光照阈值
-extern int lightValue;      // 当前光照强度
+short temperature=0;           //???
+u8    setTempValue  = 40;     //???????
+u8    setSmokeValue = 60;     //????????
+extern int setLightValue;   // ???????????
+extern int lightValue;      // ??????????
 extern float gas;
 
 bool sendFlag = 1;
@@ -22,20 +22,20 @@ void mqtt_send(void){
     
     sprintf((char*)str, "hum:%.2f", th.humidity);
     ESP8266_SendData((unsigned char*)str, strlen((char*)str));
-    memset(str, 0, sizeof(str)); //清空数组
+    memset(str, 0, sizeof(str)); //???????
     sprintf((char*)str, "temp:%.2f", th.temperature);
     ESP8266_SendData((unsigned char*)str, strlen((char*)str));
-    memset(str, 0, sizeof(str)); //清空数组
+    memset(str, 0, sizeof(str)); //???????
     sprintf((char*)str, "light:%.2f", light);
     ESP8266_SendData((unsigned char*)str, strlen((char*)str));
-    memset(str, 0, sizeof(str)); //清空数组
+    memset(str, 0, sizeof(str)); //???????
     sprintf((char*)str, "gas:%.2f", gas);
     ESP8266_SendData((unsigned char*)str, strlen((char*)str));
-    memset(str, 0, sizeof(str)); //清空数组
+    memset(str, 0, sizeof(str)); //???????
 	ESP8266_Clear();
 
 }
-//任务
+//????
 void App_recev_task(void * param){
 	//
 	while(1){

@@ -12,15 +12,17 @@ float init_angle = 0;
 void App_Control_init(void){
 	//舵机初始化
 	steering_drv_config();
-	
 	//舵机初始化角度
 	steering_drv_set_angle(init_angle);
 }
+
+void 
 
 //任务
 void App_Control_task(void * param){
 	
 	while(1){
+
 		vTaskDelay(pdMS_TO_TICKS(100));
 	}
 	vTaskDelete(NULL);

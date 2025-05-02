@@ -29,7 +29,7 @@ void bsp_key_press_callback(KEY key){
 		// led_turn_on(LED1);
 		gpio_bit_toggle(GPIOD,GPIO_PIN_9);
 	}else if(key==KEY4){//ºı…Ÿ∂» ˝
-		Buzzer_beep(7);
+		Beep_node(2);
 		vTaskDelay(pdMS_TO_TICKS(100));
 		Buzzer_stop();
 	}
