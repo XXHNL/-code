@@ -99,6 +99,9 @@
           },
           {
             "path": "Hardware/bsp_usart1/bsp_usart1.c"
+          },
+          {
+            "path": "Hardware/bsp_usart2/bsp_usart2.c"
           }
         ],
         "folders": []
@@ -367,7 +370,8 @@
           "Driver/ESP8266",
           "Hardware/bsp_usart1",
           "Driver/MQ2",
-          "Driver/bsp_buzzer"
+          "Driver/bsp_buzzer",
+          "Hardware/bsp_usart2"
         ],
         "libList": [],
         "defineList": [

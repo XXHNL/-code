@@ -1,8 +1,8 @@
 #include "App.h"
-extern TH th;
-extern float light;
+TH th;
+float light;
 extern int gas; // 声明外部气体传感器变量
-extern uint8_t str[20];
+uint8_t str[20];
 void App_Show_init(void){
 	OLED_Init();				//初始化OLED
 }
@@ -31,7 +31,7 @@ static void show_oled(void){
 void App_Show_task(void * param){
 	while(1){
 		show_oled();
-		vTaskDelay(pdMS_TO_TICKS(10));
+		vTaskDelay(pdMS_TO_TICKS(500));
 	}
 	vTaskDelete(NULL);
 }

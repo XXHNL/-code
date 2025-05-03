@@ -76,11 +76,6 @@ void usart1_init(){
 }
 
 
-
-
-
-
-
 //===============================================================????==============================
 
 //??????????
@@ -115,51 +110,44 @@ void usart1_send_string(char * str){
 	
 }
 
-// // Support printf by redefining fputc
-// int fputc1(int ch, FILE *f)
-// {      
-// while(usart_flag_get(USART1, USART_FLAG_TBE) == RESET) {
-//     /* ??????????????? */
-// }
-//     usart_data_transmit(USART1, (uint8_t)ch);
-// 	return ch;
-// }
-
 int __io_putchar(int ch) {
 	while(usart_flag_get(USART1, USART_FLAG_TBE) == RESET);
 	usart_data_transmit(USART1, (uint8_t)ch);
 	return ch;
 }
 
-//===============================================================????==============================
-
-// Make these static as well
-
-// ????
 uint8_t RX1_Buffer[RX1_MAX_LENGTH];
 uint32_t RX1_Cnt = 0;
 uint8_t RX1_Compelete = 0;
 
 
-
-// ????????§Ø?????????????
 void USART1_IRQHandler(){
-	//printf("recv..");
-	//??????????????????§Ø?
 	if(usart_interrupt_flag_get(USART1, USART_INT_FLAG_RBNE) == SET){
 		char receivedChar = usart_data_receive(USART1);
-		if (receivedChar == 'E') {
-				// Handle the reception of character 'A'
-				// Set a flag or call a control function
-				 gpio_bit_toggle(GPIOD,GPIO_PIN_9);
+		if (receivedChar == 'U') {
+			gpio_bit_toggle(GPIOD,GPIO_PIN_9);
 		}
-			//??????????¨®??????????????????????????????
-			if(RxCounter < USART1_RXBUFF_SIZE) {
-                Usart1RecBuf[RxCounter++] = usart_data_receive(USART1);//????????????
-            } else {
-                RxCounter = 0; // ??????????????????
-            }
-            RX1_Compelete = 0 ;
+		if (receivedChar == 'V') {
+			gpio_bit_toggle(GPIOD,GPIO_PIN_9);
+		}
+		if (receivedChar == 'W') {
+			humi_status = 1;	
+		}
+		if (receivedChar == 'X') {
+			humi_status = 0;	
+		}
+		if (receivedChar == 'Y') {
+			fan_status = 1;
+		}
+		if (receivedChar == 'Z') {
+			fan_status = 0;
+		}
+		if(RxCounter < USART1_RXBUFF_SIZE) {
+      Usart1RecBuf[RxCounter++] = usart_data_receive(USART1);//????????????
+    } else {
+      RxCounter = 0; // ??????????????????
+    }
+     RX1_Compelete = 0 ;
 	}
 	
 	//???????§Õ??????§Ø?

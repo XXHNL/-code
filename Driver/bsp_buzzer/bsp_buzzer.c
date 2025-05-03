@@ -81,30 +81,31 @@ void Buzzer_stop() {
 
 
 void Beep_node(u8 index){
-    if(index == 3){
-        for(int i = 0; i < index; i++){
-        Buzzer_beep(7);
-        delay_1ms(30);
-        Buzzer_stop();
-        delay_1ms(30);
-         }
-    }else if(index == 4){
-        for(int i = 0; i < index; i++){
-        Buzzer_beep(7);
-        delay_1ms(20);
-        Buzzer_stop();
-        delay_1ms(20);
-         }
-    }else if(index == 5){
-        for(int i = 0; i < index; i++){
-        Buzzer_beep(7);
-        delay_1ms(15);
-        Buzzer_stop();
-        delay_1ms(15);
-         }
-    }else{
-        for(int i = 0; i < index; i++){
+        if(index == Low){
+            for(int i = 0; i < index; i++){
             Buzzer_beep(7);
+            delay_1ms(30);
+            Buzzer_stop();
+            delay_1ms(30);
+             }
+        }else if(index == Medium){
+            for(int i = 0; i < index; i++){
+            Buzzer_beep(7);
+            delay_1ms(20);
+            Buzzer_stop();
+            delay_1ms(20);
+             }
+        }else if(index == Hign){
+            for(int i = 0; i < index; i++){
+            Buzzer_beep(7);
+            delay_1ms(15);
+            Buzzer_stop();
+            delay_1ms(15);
+             }
+        }else{
+            for(int i = 0; i < index; i++){
+                Buzzer_beep(7);
+            }
         }
-    }
+   
 }

@@ -5,7 +5,8 @@
 
 #include <stdio.h>
 
-
+extern int humi_status;
+extern int fan_status;
 #define RX1_MAX_LENGTH 200
 #define USART1_RXBUFF_SIZE   200 
 

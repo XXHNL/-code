@@ -16,6 +16,11 @@
 #define u8 uint8_t
 #endif
 
+
+#define Hign   30
+#define Medium 20
+#define Low    10
+
 // ³õÊ¼»¯·äÃùÆ÷
 void Buzzer_init();
 

@@ -1,6 +1,6 @@
 #include "App.h"
-
-
+extern  int  humi_status;
+extern int steering_status;
 void App_Input_init(void){
 	//按键初始化
 	bsp_keys_driver_init();
@@ -21,16 +21,14 @@ void App_Input_task(void * param){
 void bsp_key_press_callback(KEY key){
 	if(key==KEY1){//开窗
 		steering_drv_set_angle(180);
+		steering_status = 1;
 	}else if(key==KEY2){//关窗
 		steering_drv_set_angle(0);
-		//恢复平衡球任务
-//		task_resume(App_Balance_task);
+		steering_status = 0;
 	}else if(key==KEY3){//减少度数
 		// led_turn_on(LED1);
 		gpio_bit_toggle(GPIOD,GPIO_PIN_9);
 	}else if(key==KEY4){//减少度数
-		Beep_node(2);
-		vTaskDelay(pdMS_TO_TICKS(100));
-		Buzzer_stop();
+		usart2_send_byte('G');
 	}
 }

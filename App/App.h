@@ -6,6 +6,7 @@
 #include <stdio.h> 
 #include "bsp_usart0.h"
 #include "bsp_usart1.h"
+#include "bsp_usart2.h"
 #include "oled.h"
 #include <string.h>
 #include "circular_queue.h"
@@ -34,9 +35,6 @@ void App_Control_init(void);
 
 //任务
 void App_Control_task(void * param);
-
-
-
 
 
 /************** App_Show任务 OLED显示状态 **************/

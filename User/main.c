@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "main.h"
 #include "bsp_usart0.h"
+#include "bsp_usart2.h"
 #include "bsp_iic0.h"
 
 #include "App.h"
@@ -10,7 +11,7 @@
 
 //任务句柄,通过任务句柄可以操作任务
 TaskHandle_t start_task_handler;
-TaskHandle_t balance_task_handler;
+TaskHandle_t control_task_handler;
 TaskHandle_t input_task_handler;
 TaskHandle_t show_task_handler;
 TaskHandle_t send_cur_task_handler;
@@ -34,6 +35,7 @@ static void sys_init(void){
 	DHT11_Init();
   OLED_Init();
   usart_init();
+	usart2_init();
   BH1750_Init();
 	led_init();
 	//初始化App_Input
@@ -52,14 +54,28 @@ void start_task(void * param){//等待eg的bit0 和 bit2
 	//初始化任务
 	sys_init();
 	
-	//平衡小球任务
+	//显示任务
+	code = xTaskCreate(
+		App_Show_task,//任务函数
+		"App_Show_task",//任务名称
+		128, //任务栈内存大小(最大65535) 最终申请内存  128*4byte
+		NULL, //任务参数
+		2,    //任务优先级,优先级越大,优先级越高  不能大于configMAX_PRIORITIES
+		&show_task_handler);
+		code = xTaskCreate(
+			App_recev_task,//任务函数
+			"App_recev_task",//任务名称
+			128, //任务栈内存大小(最大65535) 最终申请内存  128*4byte
+			NULL, //任务参数
+			2,    //任务优先级,优先级越大,优先级越高  不能大于configMAX_PRIORITIES
+			&mqtt_task_handler);
 	code = xTaskCreate(
 					App_Control_task,//任务函数
 					"App_Control_task",//任务名称
 					128, //任务栈内存大小(最大65535) 最终申请内存  128*4byte
 					NULL, //任务参数
 					2,    //任务优先级,优先级越大,优先级越高  不能大于configMAX_PRIORITIES
-					&balance_task_handler);
+					&control_task_handler);
 	//按键任务
 	code = xTaskCreate(
 					App_Input_task,//任务函数
@@ -69,21 +85,8 @@ void start_task(void * param){//等待eg的bit0 和 bit2
 					2,    //任务优先级,优先级越大,优先级越高  不能大于configMAX_PRIORITIES
 					&input_task_handler);
 	
-	code = xTaskCreate(
-						App_recev_task,//任务函数
-						"App_recev_task",//任务名称
-						128, //任务栈内存大小(最大65535) 最终申请内存  128*4byte
-						NULL, //任务参数
-						2,    //任务优先级,优先级越大,优先级越高  不能大于configMAX_PRIORITIES
-						&mqtt_task_handler);
-	//显示任务
-	code = xTaskCreate(
-					App_Show_task,//任务函数
-					"App_Show_task",//任务名称
-					128, //任务栈内存大小(最大65535) 最终申请内存  128*4byte
-					NULL, //任务参数
-					2,    //任务优先级,优先级越大,优先级越高  不能大于configMAX_PRIORITIES
-					&show_task_handler);
+	
+	
 	//任务结束,删除任务
 	vTaskDelete(NULL); //删除本任务
 }
