@@ -7,6 +7,7 @@
 
 extern int humi_status;
 extern int fan_status;
+extern int yuyin_status;
 #define RX1_MAX_LENGTH 200
 #define USART1_RXBUFF_SIZE   200 
 
@@ -16,9 +17,7 @@ extern char Usart1RecBuf[USART1_RXBUFF_SIZE]; //外部声明，其他文件可以调用该变量
 extern uint8_t RX1_Buffer[RX1_MAX_LENGTH];
 extern uint32_t RX1_Cnt;
 extern uint8_t RX1_Compelete;
-
-
-
+extern int app_status;
 
 void usart1_init();
 

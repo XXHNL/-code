@@ -30,7 +30,7 @@ void mqtt_send(void){
     ESP8266_SendData((unsigned char*)str, strlen((char*)str));
     memset(str, 0, sizeof(str)); //???????
     delay_1ms(1);
-	// ESP8266_Clear();
+	ESP8266_Clear();
 
 }
 //????

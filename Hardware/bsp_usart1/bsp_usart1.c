@@ -132,15 +132,23 @@ void USART1_IRQHandler(){
 		}
 		if (receivedChar == 'W') {
 			humi_status = 1;	
+			yuyin_status =0;
+			app_status = 1;
 		}
 		if (receivedChar == 'X') {
 			humi_status = 0;	
+			yuyin_status = 0;
+			app_status = 1;
 		}
 		if (receivedChar == 'Y') {
 			fan_status = 1;
+			yuyin_status = 0;
+			app_status = 1;
 		}
 		if (receivedChar == 'Z') {
 			fan_status = 0;
+			yuyin_status = 0;
+			app_status = 1;
 		}
 		if(RxCounter < USART1_RXBUFF_SIZE) {
       Usart1RecBuf[RxCounter++] = usart_data_receive(USART1);//????????????

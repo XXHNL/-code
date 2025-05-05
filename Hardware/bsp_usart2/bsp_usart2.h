@@ -17,6 +17,9 @@ extern uint32_t RX2_Cnt;
 extern uint8_t RX2_Compelete;
 extern int humi_status;
 extern int fan_status;
+extern int yuyin_status;
+extern int steering_status;
+extern int app_status;
 
 
 

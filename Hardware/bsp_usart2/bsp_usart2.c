@@ -119,16 +119,34 @@ void USART2_IRQHandler(){
 		gpio_bit_toggle(GPIOD,GPIO_PIN_9);
 	}
 	if (receivedChar == 'G') {
-		humi_status = 1;	
+		humi_status = 1;
+		yuyin_status = 1;	
+		app_status = 0;
 	}
 	if (receivedChar == 'H') {
 		humi_status = 0;
+		yuyin_status = 1;
+		app_status = 0;
 	}
 	if (receivedChar == 'I') {
 		fan_status = 1;
+		yuyin_status = 1;	
+		app_status = 0;
 	}
 	if (receivedChar == 'J') {
 		fan_status = 0;
+		yuyin_status = 1;
+		app_status = 0;
+	}
+	if(receivedChar == 'K') {
+		app_status = 0;
+		steering_status = 1;
+		yuyin_status = 1;	
+	}
+	if(receivedChar == 'L') {
+		app_status = 0;
+		steering_status = 0;
+		yuyin_status = 1;
 	}
 			//??????????ио??????????????????????????????
 			if(Rx2Counter < USART2_RXBUFF_SIZE) {

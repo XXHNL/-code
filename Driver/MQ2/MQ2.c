@@ -1,5 +1,5 @@
 #include "MQ2.h"
-int gas; // ??????????gas
+int gas;
 void ADC_config(){
 
   rcu_periph_clock_enable(RCU_GPIOA);

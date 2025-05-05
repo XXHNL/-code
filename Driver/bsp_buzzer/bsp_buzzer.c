@@ -81,21 +81,21 @@ void Buzzer_stop() {
 
 
 void Beep_node(u8 index){
-        if(index == Low){
+        if(index == 10){
             for(int i = 0; i < index; i++){
             Buzzer_beep(7);
             delay_1ms(30);
             Buzzer_stop();
             delay_1ms(30);
              }
-        }else if(index == Medium){
+        }else if(index == 20){
             for(int i = 0; i < index; i++){
             Buzzer_beep(7);
             delay_1ms(20);
             Buzzer_stop();
             delay_1ms(20);
              }
-        }else if(index == Hign){
+        }else if(index == 30){
             for(int i = 0; i < index; i++){
             Buzzer_beep(7);
             delay_1ms(15);
