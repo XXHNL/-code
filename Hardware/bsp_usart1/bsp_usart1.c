@@ -125,7 +125,8 @@ void USART1_IRQHandler(){
 	if(usart_interrupt_flag_get(USART1, USART_INT_FLAG_RBNE) == SET){
 		char receivedChar = usart_data_receive(USART1);
 		if (receivedChar == 'U') {
-			gpio_bit_toggle(GPIOD,GPIO_PIN_9);
+			app_status = 0;
+			yuyin_status = 0;
 		}
 		if (receivedChar == 'V') {
 			gpio_bit_toggle(GPIOD,GPIO_PIN_9);

@@ -38,6 +38,7 @@ void App_Control_init(void){
 
 //任务
 void App_Control_logic(void) {
+   
     // 判断温度是否大于上限
     if (th.temperature > TEMPERATURE_UPPER_LIMIT && temp_status == 0) {
         if (steering_status == 0 && yuyin_status == 0) {
