@@ -38,6 +38,8 @@ void App_Control_init(void){
 
 //任务
 void App_Control_logic(void) {
+    // 在读取数据前获取信号量，确保数据同步
+    xSemaphoreTake(xDataReadySemaphore, portMAX_DELAY);
    
     // 判断温度是否大于上限
     if (th.temperature > TEMPERATURE_UPPER_LIMIT && temp_status == 0) {
@@ -147,12 +149,14 @@ void App_Control_logic(void) {
         }
         led_set_brightness(brightness);
     }
+    // 控制逻辑处理完毕后释放信号量，允许其他任务读取最新数据
+    xSemaphoreGive(xDataReadySemaphore);
 }
 // 在任务中调用逻辑函数
 void App_Control_task(void * param){
     while(1){
         App_Control_logic();
-        vTaskDelay(pdMS_TO_TICKS(10));
+        vTaskDelay(pdMS_TO_TICKS(21));
     }
     vTaskDelete(NULL);
 }
